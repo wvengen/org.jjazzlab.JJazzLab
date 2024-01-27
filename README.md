@@ -11,6 +11,9 @@ Make sure it corresponds to the OpenJDK extension in use.
 
 ## Updating Maven dependencies
 
+The build process does not have network access (by design). All files required need to be declared, and are downloaded by the builder.
+For Maven, there are many files. After an application update, the list can be re-generated as follows.
+
 1. In `org.jjazzlab.JJazzLab.yml`, enable network in build-args, disable `maven-dependencies.yml` source (see comments).
 
 2. Build from scratch:
