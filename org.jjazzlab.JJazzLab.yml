@@ -1,0 +1,61 @@
+id: org.jjazzlab.JJazzLab
+runtime: org.freedesktop.Platform
+runtime-version: '23.08'
+sdk: org.freedesktop.Sdk
+sdk-extensions:
+  - 'org.freedesktop.Sdk.Extension.openjdk17'
+
+command: /app/bin/jjazzlab
+separate-locales: false
+finish-args:
+  - --share=ipc
+  - --socket=x11
+  - --device=dri
+  - --socket=pulseaudio
+  - --filesystem=home
+  - --env=PATH=/usr/bin:/app/jre/bin
+  - --env=JAVA_HOME=/app/jre
+
+modules:
+  - name: openjdk
+    buildsystem: simple
+    build-commands:
+      - /usr/lib/sdk/openjdk17/install.sh
+
+  #- name: soundfont
+  #  buildsystem: simple
+  #  sources:
+  #    - type: file
+  #      url: https://archive.org/download/jjazz-lab-sound-font/JJazzLab-SoundFont.sf2
+  #      sha256: 50ab9eaa711dd3af02544420f75881be833a876f9051c60d80c231f6387d8d80
+  #      dest: modules/FluidSynthEmbeddedSynth/src/main/soundfont
+
+  # https://github.com/flathub/shared-modules/blob/fd4d38328ccb078b88ad4a891807e593ae8de806/linux-audio/fluidsynth2.json
+  # - shared-modules/linux-audio/fluidsynth2.json
+
+  - name: jjazzlab
+    buildsystem: simple
+    build-options:
+      env:
+        PATH: /usr/bin:/usr/lib/sdk/openjdk17/bin
+        JAVA_HOME: /usr/lib/sdk/openjdk17/jvm/openjdk-17
+        MAVEN_OPTS: -Dmaven.repo.local=.m2/repository
+      # uncomment the following line when updating maven-dependencies.yml
+      #build-args: ['--share=network']
+    build-commands:
+      - mvn package
+      - find application/target -name \*.dll -o -name \*.exe -o -name .lastModified | xargs rm -f
+      - cp -R application/target/jjazzlab/* $FLATPAK_DEST
+    sources:
+      - type: archive
+        dest-filename: JJazzLab.tar.gz
+        url: https://api.github.com/repos/jjazzboss/JJazzLab/tarball/4.0.2
+        sha256: 8b63c3c0193aa295ecb448c04076ff9b124288b5c98296d7c14c2ff6a9b179ca
+        x-checker-data:
+          type: json
+          url: https://api.github.com/repos/jjazzboss/JJazzLab/releases/latest
+          version-query: .tag_name | sub("^v"; "")
+          url-query: .tarball_url
+      # comment the following line when updating maven-dependencies.yml
+      - maven-dependencies.yml
+
