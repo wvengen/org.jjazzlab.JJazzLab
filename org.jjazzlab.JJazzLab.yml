@@ -5,7 +5,7 @@ sdk: org.freedesktop.Sdk
 sdk-extensions:
   - 'org.freedesktop.Sdk.Extension.openjdk17'
 
-command: /app/bin/jjazzlab
+command: jjazzlab
 separate-locales: false
 finish-args:
   # X11
