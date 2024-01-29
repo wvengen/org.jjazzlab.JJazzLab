@@ -13,6 +13,8 @@ finish-args:
   - --device=dri
   - --socket=pulseaudio
   - --filesystem=home
+  - --filesystem=~/.jjazzlab
+  - --filesystem=~/.cache/jjazzlab
   - --env=PATH=/usr/bin:/app/jre/bin:/app/bin
   - --env=JAVA_HOME=/app/jre
 
