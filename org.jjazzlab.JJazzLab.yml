@@ -25,13 +25,17 @@ modules:
     build-commands:
       - /usr/lib/sdk/openjdk17/install.sh
 
-  #- name: soundfont
-  #  buildsystem: simple
-  #  sources:
-  #    - type: file
-  #      url: https://archive.org/download/jjazz-lab-sound-font/JJazzLab-SoundFont.sf2
-  #      sha256: 50ab9eaa711dd3af02544420f75881be833a876f9051c60d80c231f6387d8d80
-  #      dest: modules/FluidSynthEmbeddedSynth/src/main/soundfont
+  - name: soundfont
+    buildsystem: simple
+    build-commands:
+      - mkdir -p $FLATPAK_DEST/share/sounds/sf2
+      - cp JJazzLab-SoundFont.sf2 $FLATPAK_DEST/share/sounds/sf2/
+    sources:
+      - type: file
+        url: https://archive.org/download/jjazz-lab-sound-font/JJazzLab-SoundFont.sf2
+        sha256: 50ab9eaa711dd3af02544420f75881be833a876f9051c60d80c231f6387d8d80
+
+  - fluidsynth2.yml
 
   - xrdb.yml # needed to get GTK / Java theming right
 
@@ -48,6 +52,7 @@ modules:
       - mvn package
       - find application/target -name \*.dll -o -name \*.exe -o -name .lastModified | xargs rm -f
       - cp -R application/target/jjazzlab/* $FLATPAK_DEST
+      - sed -i 's/^\(default_options=.*\)"/\1 -J-Dfluidsynthlib.path=\/app\/lib\/libfluidsynth.so.3 -J-DFluidSynthSoundFontFile=\/app\/share\/sounds\/sf2\/JJazzLab-SoundFont.sf2"/' $FLATPAK_DEST/etc/jjazzlab.conf
     sources:
       - type: archive
         dest-filename: JJazzLab.tar.gz
