@@ -13,7 +13,7 @@ finish-args:
   - --device=dri
   - --socket=pulseaudio
   - --filesystem=home
-  - --env=PATH=/usr/bin:/app/jre/bin
+  - --env=PATH=/usr/bin:/app/jre/bin:/app/bin
   - --env=JAVA_HOME=/app/jre
 
 modules:
@@ -30,8 +30,7 @@ modules:
   #      sha256: 50ab9eaa711dd3af02544420f75881be833a876f9051c60d80c231f6387d8d80
   #      dest: modules/FluidSynthEmbeddedSynth/src/main/soundfont
 
-  # https://github.com/flathub/shared-modules/blob/fd4d38328ccb078b88ad4a891807e593ae8de806/linux-audio/fluidsynth2.json
-  # - shared-modules/linux-audio/fluidsynth2.json
+  - xrdb.yml # needed to get GTK / Java theming right
 
   - name: jjazzlab
     buildsystem: simple
