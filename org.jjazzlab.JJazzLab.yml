@@ -73,3 +73,19 @@ modules:
       # comment the following line when updating maven-dependencies.yml
       - maven-dependencies.yml
 
+  - name: desktop
+    buildsystem: simple
+    build-commands:
+      - install -Dm644 org.jjazzlab.JJazzLab.metainfo.xml $FLATPAK_DEST/share/metainfo/org.jjazzlab.JJazzLab.metainfo.xml
+      - install -Dm644 org.jjazzlab.JJazzLab.desktop $FLATPAK_DEST/share/applications/org.jjazzlab.JJazzLab.desktop
+      - install -Dm644 logo.svg $FLATPAK_DEST/share/icons/hicolor/scalable/apps/org.jjazzlab.JJazzLab.svg
+    sources:
+      - type: file
+        dest-filename: logo.svg
+        url: https://github.com/jjazzboss/JJazzLab/raw/master/graphics/logo-JJazzLab.svg
+        sha256: 69328df4cfffe25331e58af284ffa7320cf99cd242582c2068fd8637111df5ac
+      - type: file
+        path: org.jjazzlab.JJazzLab.metainfo.xml
+      - type: file
+        path: org.jjazzlab.JJazzLab.desktop
+
