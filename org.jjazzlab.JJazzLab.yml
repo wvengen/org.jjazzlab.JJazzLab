@@ -8,14 +8,21 @@ sdk-extensions:
 command: /app/bin/jjazzlab
 separate-locales: false
 finish-args:
+  # X11
   - --share=ipc
   - --socket=x11
   - --device=dri
+  # sound generation
   - --socket=pulseaudio
+  # needed for JACK over PipeWire
+  - --filesystem=xdg-run/pipewire-0
+  # printing
   - --socket=cups
+  # files
   - --filesystem=home
   - --filesystem=~/.jjazzlab
   - --filesystem=~/.cache/jjazzlab
+  # setup Java Runtime Environment
   - --env=PATH=/usr/bin:/app/jre/bin:/app/bin
   - --env=JAVA_HOME=/app/jre
 
