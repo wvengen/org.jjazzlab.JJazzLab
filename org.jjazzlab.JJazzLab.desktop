@@ -1,5 +1,7 @@
 [Desktop Entry]
 Type=Application
 Name=JJazzLab
+Comment=Generate automatic backing tracks
 Icon=org.jjazzlab.JJazzLab
 Exec=/app/bin/jjazzlab
+SingleMainWindow=true
