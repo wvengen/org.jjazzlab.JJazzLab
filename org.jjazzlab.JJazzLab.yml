@@ -38,6 +38,12 @@ modules:
       - type: file
         url: https://archive.org/download/jjazz-lab-sound-font/JJazzLab-SoundFont.sf2
         sha256: 50ab9eaa711dd3af02544420f75881be833a876f9051c60d80c231f6387d8d80
+        # we slightly abuse the checker by using the modification time (integer) as version
+        x-checker-data:
+          type: json
+          url: https://archive.org/metadata/jjazz-lab-sound-font/files
+          version-query: '.result[] | select(.name=="JJazzLab-SoundFont.sf2") | .mtime'
+          url-query: '"https://archive.org/download/jjazz-lab-sound-font/JJazzLab-SoundFont.sf2"'
 
   - fluidsynth2.yml
 
@@ -81,7 +87,7 @@ modules:
     sources:
       - type: file
         dest-filename: logo.svg
-        url: https://github.com/jjazzboss/JJazzLab/raw/master/graphics/logo-JJazzLab.svg
+        url: https://github.com/jjazzboss/JJazzLab/raw/242e0855fab432ef0c273e4e604f67b4b1ed456e/graphics/logo-JJazzLab.svg
         sha256: 69328df4cfffe25331e58af284ffa7320cf99cd242582c2068fd8637111df5ac
       - type: file
         path: org.jjazzlab.JJazzLab.metainfo.xml
