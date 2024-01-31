@@ -12,16 +12,13 @@ finish-args:
   - --share=ipc
   - --socket=x11
   - --device=dri
-  # sound generation
+  # audio: pulseaudio, JACK over PipeWire
   - --socket=pulseaudio
-  # needed for JACK over PipeWire
   - --filesystem=xdg-run/pipewire-0
   # printing
   - --socket=cups
   # files
-  - --filesystem=home
-  - --filesystem=~/.jjazzlab
-  - --filesystem=~/.cache/jjazzlab
+  - --filesystem=~/JJazzLab
   # setup Java Runtime Environment
   - --env=PATH=/usr/bin:/app/jre/bin:/app/bin
   - --env=JAVA_HOME=/app/jre
@@ -60,6 +57,8 @@ modules:
       - find application/target -name \*.dll -o -name \*.exe -o -name .lastModified | xargs rm -f
       - cp -R application/target/jjazzlab/* $FLATPAK_DEST
       - sed -i 's/^\(default_options=.*\)"/\1 -J-Dfluidsynthlib.path=\/app\/lib\/libfluidsynth.so.3 -J-DFluidSynthSoundFontFile=\/app\/share\/sounds\/sf2\/JJazzLab-SoundFont.sf2"/' $FLATPAK_DEST/etc/jjazzlab.conf
+      - sed -i 's/${DEFAULT_CACHEDIR_ROOT}/${XDG_CACHE_HOME}\/jjazzlab/' $FLATPAK_DEST/etc/jjazzlab.conf
+      - sed -i 's/${DEFAULT_USERDIR_ROOT}/${XDG_DATA_HOME}\/jjazzlab/' $FLATPAK_DEST/etc/jjazzlab.conf
     sources:
       - type: archive
         dest-filename: JJazzLab.tar.gz
