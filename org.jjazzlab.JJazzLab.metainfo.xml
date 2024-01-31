@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2024 wvengen -->
 <component type="desktop-application">
   <id>org.jjazzlab.JJazzLab</id>
   <launchable type="desktop-id">org.jjazzlab.JJazzLab.desktop</launchable>
@@ -20,8 +21,8 @@
       <li><strong>Dynamic backing tracks</strong><br />Start a solo slowly and gradually build up the atmosphere.</li>
       <li><strong>Rhythmic accents</strong><br />Use chord anticipations and rhythmic accents to spice up the arrangement.</li>
       <li><strong>Benefit from 1000's of free Yamaha style files</strong><br />JJazzLab can read Yamaha style files. It also introduces new extension files for even more style variations.</li>
-      <li><strong>A simple and powerful user interface</strong><br />Type in a few chord symbols, pick up a rhythm, and press start, it’s a matter of seconds. Need more ? Introduce rhythm and intensity variations, custom bass phrases, etc.</li>
-      <li><strong>An open platform for developers</strong><br />Leverage the JJazzLab open-source code to add features and new music generation capabilities via plugins. </li>
+      <li><strong>A simple and powerful user interface</strong><br />Type in a few chord symbols, pick up a rhythm, and press start, it’s a matter of seconds. Need more? Introduce rhythm and intensity variations, custom bass phrases, etc.</li>
+      <li><strong>An open platform for developers</strong><br />Leverage the JJazzLab open-source code to add features and new music generation capabilities via plugins.</li>
     </ul>
   </description>
   <screenshots>
