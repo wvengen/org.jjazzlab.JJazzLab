@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
 Name=JJazzLab
-Comment=Generate automatic backing tracks
+Comment=Generate backing tracks for any song
 Icon=org.jjazzlab.JJazzLab
 Exec=/app/bin/jjazzlab

@@ -5,7 +5,7 @@
   <launchable type="desktop-id">org.jjazzlab.JJazzLab.desktop</launchable>
   <name>JJazzLab</name>
   <developer_name>jjazzboss</developer_name>
-  <summary>Generate automatic backing tracks</summary>
+  <summary>Generate backing tracks for any song</summary>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>LGPL-3.0-or-later</project_license>
   <url type="homepage">https://www.jjazzlab.com/</url>
@@ -28,7 +28,7 @@
   <screenshots>
     <screenshot type="default">
       <caption>The main window with a sample song</caption>
-      <image xml:lang="en">https://github.com/jjazzboss/JJazzLab-UserGuide/blob/master/.gitbook/assets/JJazzLab4-full1.png</image>
+      <image xml:lang="en">https://github.com/jjazzboss/JJazzLab/blob/23a952ac085c4658f86a064705ae8c3b79614c4d/graphics/JJazzLab-1000x700.png?raw=true</image>
     </screenshot>
   </screenshots>
   <releases>
