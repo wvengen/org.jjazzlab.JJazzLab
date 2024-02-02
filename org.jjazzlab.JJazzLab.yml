@@ -63,6 +63,7 @@ modules:
       - find application/target -name \*.dll -o -name \*.exe -o -name .lastModified | xargs rm -f
       - cp -R application/target/jjazzlab/* $FLATPAK_DEST
       - sed -i 's/^\(default_options=.*\)"/\1 -J-Dfluidsynthlib.path=\/app\/lib\/libfluidsynth.so.3 -J-DFluidSynthSoundFontFile=\/app\/share\/sounds\/sf2\/JJazzLab-SoundFont.sf2"/' $FLATPAK_DEST/etc/jjazzlab.conf
+      - sed -i 's/^\(default_options=.*\)"/\1 -J-Dmp.token=a67ed8aa58b306c1336dcf74fb99b2f69f1"/' $FLATPAK_DEST/etc/jjazzlab.conf
       - sed -i 's/${DEFAULT_CACHEDIR_ROOT}/${XDG_CACHE_HOME}\/jjazzlab/' $FLATPAK_DEST/etc/jjazzlab.conf
       - sed -i 's/${DEFAULT_USERDIR_ROOT}/${XDG_DATA_HOME}\/jjazzlab/' $FLATPAK_DEST/etc/jjazzlab.conf
     sources:
